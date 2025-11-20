@@ -31,3 +31,15 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# PyInstaller
+dist/
+build/
+*.spec
+
+# Buildozer
+.buildozer/
+bin/
+
+# Python
+__pycache__/
