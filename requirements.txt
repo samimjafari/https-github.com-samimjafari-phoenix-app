@@ -1,0 +1,4 @@
+requests
+llama-cpp-python
+googlesearch-python
+tkinter
