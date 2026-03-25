@@ -1,44 +1,67 @@
-# AI Library with Online and Offline Modes
+# Glowing-Guacamole AI Assistant 🥑🚀
 
-This project provides a graphical user interface (GUI) that can switch between online and offline modes for an AI-powered library. It uses `llama-cpp-python` for offline inference with GGUF models and `requests` to connect to an online AI service.
+A professional, offline-first AI assistant with **semantic memory**, **AES-256-GCM encryption**, **web search**, and **GitHub integration**. Designed for Desktop, Android (Termux/Native), and Kali Linux.
 
-## Setup
+## ✨ Key Features
 
-### 1. Install Dependencies
-Make sure you have Python installed. Then, install the required libraries using pip:
+- **🔒 High Security:** All your memories, notes, and conversations are stored in a local SQLite database encrypted with **AES-256-GCM**. Access is controlled by your master password.
+- **🧠 Semantic Memory:** Uses `sentence-transformers` for concept-based search. The assistant understands the context of your previous interactions.
+- **🤖 Dual Mode:**
+  - **Offline:** Run GGUF models (LLaMA, Mistral, Qwen) locally using `llama-cpp-python`.
+  - **Online:** Connect to DeepSeek or OpenAI-compatible APIs for high-performance reasoning.
+- **🌐 Web Search:** Integrated search (DeepSeek API or custom scraper) for real-time information.
+- **🐙 GitHub Integration:** Automatically generates SSH keys and analyzes public repositories.
+- **💻 Multi-Platform:**
+  - **GUI:** Modern interface built with **Flet** (Windows, Linux, Android).
+  - **CLI:** Professional terminal interface for **Kali Linux** and **Termux**.
+- **⚡ System Commands:** Safely execute shell commands directly from the assistant.
+
+## 🛠 Installation
+
+### 1. Requirements
+- Python 3.8+
+- C++ Compiler (for `llama-cpp-python` if no binary wheel is available)
+
+### 2. Setup
+Clone the repository and install dependencies:
 ```bash
-pip install -r requirements.txt
+git clone https://github.com/samimjafari/glowing-guacamole.git
+cd glowing-guacamole
+pip install -e .
 ```
 
-### 2. Download a GGUF Model
-This application requires a GGUF model for offline mode. Due to size constraints, you need to download it manually.
-
-1.  **Download the model:** You can download a model from Hugging Face. For example, to download the TinyLlama model, you can use this link:
-    [https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf](https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf)
-
-2.  **Place the model in the project directory:** Rename the downloaded file to `your-model.gguf` and place it in the same directory as the application.
-
-### 3. Configure the Online Mode
-For online mode, you need to provide an API key as an environment variable.
-
-*   **API Key:** Before running the application, set the `OPENAI_API_KEY` environment variable to your secret API key.
-
-    **On Windows:**
-    ```bash
-    set OPENAI_API_KEY=YOUR_SECRET_API_KEY
-    ```
-
-    **On macOS and Linux:**
-    ```bash
-    export OPENAI_API_KEY=YOUR_SECRET_API_KEY
-    ```
-
-*   **API Endpoint:** The application is pre-configured to use the OpenAI API. If you are using a different service, you will need to update the `api_url` in `ai_library/core.py`.
-
-## How to Run
-Once you've completed the setup, you can run the application with the following command:
+### 3. Termux / Kali Linux Installation
+For **Termux** or **Kali Linux**, you can use the provided setup script:
 ```bash
-python gui.py
+chmod +x setup_termux.sh
+./setup_termux.sh
 ```
 
-The application will automatically detect if you have an internet connection and choose the appropriate mode.
+### 4. Model Setup (Offline Mode)
+1. Download a GGUF model (e.g., [TinyLlama](https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF)).
+2. Rename it to `your-model.gguf` and place it in the project root.
+
+## 🚀 How to Run
+
+### Graphical User Interface (GUI)
+```bash
+python gui_flet.py
+```
+
+### Command Line Interface (CLI)
+```bash
+python cli.py
+```
+
+## 📖 Commands
+- `!ls` : Execute system command (e.g., `ls`, `pwd`).
+- `/search [query]` : Search the web and get AI analysis.
+- `/github [user/repo]` : Analyze a GitHub repository.
+- `/ssh-gen` : Generate a secure SSH key pair.
+- `/help` : Show all available options.
+
+## 🔒 Security Note
+When you run the app for the first time, you will be asked for a **Master Password**. This password is used to derive a unique encryption key. **If you lose this password, your stored memories will be unrecoverable.**
+
+---
+*Created with ❤️ for the open-source community.*

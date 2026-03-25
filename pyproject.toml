@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "glowing-guacamole"
+version = "0.1.0"
+description = "A powerful, offline-first AI assistant with semantic memory, web search, and GitHub integration."
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "requests",
+    "llama-cpp-python",
+    "googlesearch-python",
+    "cryptography",
+    "sentence-transformers",
+    "numpy",
+    "rich",
+    "flet",
+    "PyGithub",
+    "beautifulsoup4"
+]
+
+[project.scripts]
+glowing-guacamole = "cli:main"
+glowing-guacamole-gui = "gui_flet:main"
