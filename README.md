@@ -30,7 +30,14 @@ cd glowing-guacamole
 pip install -e .
 ```
 
-### 3. Model Setup (Offline Mode)
+### 3. Termux / Kali Linux Installation
+For **Termux** or **Kali Linux**, you can use the provided setup script:
+```bash
+chmod +x setup_termux.sh
+./setup_termux.sh
+```
+
+### 4. Model Setup (Offline Mode)
 1. Download a GGUF model (e.g., [TinyLlama](https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF)).
 2. Rename it to `your-model.gguf` and place it in the project root.
 
