@@ -1,67 +1,110 @@
 # Glowing-Guacamole AI Assistant 🥑🚀
 
-A professional, offline-first AI assistant with **semantic memory**, **AES-256-GCM encryption**, **web search**, and **GitHub integration**. Designed for Desktop, Android (Termux/Native), and Kali Linux.
+یک دستیار هوش مصنوعی حرفه‌ای، آفلاین‌محور با **حافظه معنایی**، **رمزنگاری AES-256-GCM**، **جستجوی وب** و **اتصال GitHub**. طراحی شده برای دسکتاپ، اندروید (Termux) و کالی لینوکس.
 
-## ✨ Key Features
+---
 
-- **🔒 High Security:** All your memories, notes, and conversations are stored in a local SQLite database encrypted with **AES-256-GCM**. Access is controlled by your master password.
-- **🧠 Semantic Memory:** Uses `sentence-transformers` for concept-based search. The assistant understands the context of your previous interactions.
-- **🤖 Dual Mode:**
-  - **Offline:** Run GGUF models (LLaMA, Mistral, Qwen) locally using `llama-cpp-python`.
-  - **Online:** Connect to DeepSeek or OpenAI-compatible APIs for high-performance reasoning.
-- **🌐 Web Search:** Integrated search (DeepSeek API or custom scraper) for real-time information.
-- **🐙 GitHub Integration:** Automatically generates SSH keys and analyzes public repositories.
-- **💻 Multi-Platform:**
-  - **GUI:** Modern interface built with **Flet** (Windows, Linux, Android).
-  - **CLI:** Professional terminal interface for **Kali Linux** and **Termux**.
-- **⚡ System Commands:** Safely execute shell commands directly from the assistant.
+## 📖 دستورالعمل ماستر نصب و اجرا
 
-## 🛠 Installation
+### ۱. پیش‌نیازها
+- **Android (Termux):**
+  ```bash
+  pkg update && pkg upgrade
+  pkg install python git nodejs npm clang
+  ```
+- **Kali Linux / Ubuntu / Debian:**
+  ```bash
+  sudo apt update && sudo apt upgrade
+  sudo apt install python3 python3-pip git nodejs npm g++ build-essential
+  ```
+- **Windows/Linux Desktop:**
+  - نصب Python 3.8+
+  - نصب Node.js و npm
+  - نصب Git
 
-### 1. Requirements
-- Python 3.8+
-- C++ Compiler (for `llama-cpp-python` if no binary wheel is available)
+---
 
-### 2. Setup
-Clone the repository and install dependencies:
+### ۲. دریافت سورس کد
 ```bash
 git clone https://github.com/samimjafari/glowing-guacamole.git
 cd glowing-guacamole
-pip install -e .
 ```
 
-### 3. Termux / Kali Linux Installation
-For **Termux** or **Kali Linux**, you can use the provided setup script:
-```bash
-chmod +x setup_termux.sh
-./setup_termux.sh
-```
+---
 
-### 4. Model Setup (Offline Mode)
-1. Download a GGUF model (e.g., [TinyLlama](https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF)).
-2. Rename it to `your-model.gguf` and place it in the project root.
+### ۳. نصب وابستگی‌ها
+این پروژه دو بخش دارد: پایتون (AI Assistant) و جاوااسکریپت (GUI/Build)
 
-## 🚀 How to Run
+- **پایتون:**
+  ```bash
+  pip install -r requirements.txt
+  # یا نصب دستی:
+  pip install flet llama-cpp-python sentence-transformers cryptography numpy rich PyGithub beautifulsoup4
+  ```
 
-### Graphical User Interface (GUI)
-```bash
-python gui_flet.py
-```
+- **Node.js (برای ساخت GUI و APK/EXE):**
+  ```bash
+  npm install
+  ```
 
-### Command Line Interface (CLI)
-```bash
-python cli.py
-```
+---
 
-## 📖 Commands
-- `!ls` : Execute system command (e.g., `ls`, `pwd`).
-- `/search [query]` : Search the web and get AI analysis.
-- `/github [user/repo]` : Analyze a GitHub repository.
-- `/ssh-gen` : Generate a secure SSH key pair.
-- `/help` : Show all available options.
+### ۴. نصب ابزارهای مخصوص هر پلتفرم
+- **Termux:**
+  ```bash
+  chmod +x setup_termux.sh
+  ./setup_termux.sh
+  ```
+- **Kali Linux:**
+  ```bash
+  chmod +x scripts/install-tools-kali.sh
+  ./scripts/install-tools-kali.sh
+  ```
+- **Linux Desktop:**
+  ```bash
+  chmod +x scripts/install-tools-linux.sh
+  ./scripts/install-tools-linux.sh
+  ```
 
-## 🔒 Security Note
-When you run the app for the first time, you will be asked for a **Master Password**. This password is used to derive a unique encryption key. **If you lose this password, your stored memories will be unrecoverable.**
+---
+
+### ۵. راه‌اندازی مدل آفلاین
+- یک مدل GGUF (مثل TinyLlama) دانلود کنید.
+- نام آن را به `your-model.gguf` تغییر دهید.
+- در پوشه‌ی اصلی پروژه قرار دهید.
+
+---
+
+### ۶. اجرای برنامه
+- **رابط گرافیکی (GUI):**
+  ```bash
+  python gui_flet.py
+  # یا با npm:
+  npm start
+  ```
+- **رابط خط فرمان (CLI):**
+  ```bash
+  python cli.py
+  # یا با npm:
+  npm run cli
+  ```
+
+---
+
+### ۷. ساخت اپلیکیشن (Build)
+- **ساخت EXE (Windows):**
+  ```bash
+  npm run desktop:build
+  ```
+- **ساخت APK (Android):**
+  ```bash
+  npm run mobile:apk
+  ```
+
+---
+
+### ۸. نکته امنیتی 🔒
+در اولین اجرا، از شما **رمز اصلی (Master Password)** خواسته می‌شود. این رمز برای تولید کلید رمزگذاری **AES-256-GCM** استفاده می‌شود. اگر رمز را فراموش کنید، حافظه و داده‌های شما غیرقابل بازیابی خواهند بود.
 
 ---
 *Created with ❤️ for the open-source community.*

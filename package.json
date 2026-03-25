@@ -1,0 +1,26 @@
+{
+  "name": "glowing-guacamole",
+  "version": "1.0.0",
+  "description": "Professional, offline-first AI Assistant with secure memory.",
+  "main": "gui_flet.py",
+  "scripts": {
+    "start": "python gui_flet.py",
+    "cli": "python cli.py",
+    "desktop:build": "flet build windows",
+    "mobile:apk": "flet build apk",
+    "mobile:appbundle": "flet build appbundle",
+    "install:deps": "pip install -r requirements.txt && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai",
+    "assistant",
+    "flet",
+    "gguf",
+    "secure",
+    "memory"
+  ],
+  "author": "Samim Jafari",
+  "license": "MIT",
+  "dependencies": {}
+}
