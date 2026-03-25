@@ -1,4 +1,10 @@
 requests
 llama-cpp-python
 googlesearch-python
-tkinter
+cryptography
+sentence-transformers
+numpy
+rich
+flet
+PyGithub
+beautifulsoup4
