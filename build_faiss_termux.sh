@@ -35,7 +35,8 @@ make -j$(nproc) swigfaiss
 
 echo "--- [5/5] Installing Python bindings ---"
 # Fix: Corrected path from 'faiss/build' to '../faiss/python' relative to 'faiss/build'
-cd ../faiss/python
+# Standard FAISS structure: python/ folder is in the root of the repo.
+cd ../python
 python setup.py install
 
 echo "--- ✅ FAISS-CPU for Termux build complete! ---"
